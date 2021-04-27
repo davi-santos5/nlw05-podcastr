@@ -31,11 +31,6 @@ type EpisodeProps = {
 
 export default function Episode({ episode }: EpisodeProps) {
   // const { play } = usePlayer();
-  const router = useRouter();
-
-  if (router.isFallback) {
-    return <p>Carregando...</p>;
-  }
 
   return (
     <div className={styles.episode}>
@@ -89,7 +84,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     },
   });
 
-  const paths = data.map((episode) => ({
+  const paths = data.map((episode: Episode) => ({
     params: {
       slug: episode.id,
     },
